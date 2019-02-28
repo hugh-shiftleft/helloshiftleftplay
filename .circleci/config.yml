@@ -14,7 +14,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/postgres:9.4
 
-    working_directory: ~/repo
+    working_directory: ~/hslfinance
 
     environment:
       SBT_VERSION: 1.0.4
@@ -45,7 +45,7 @@ jobs:
           name: Build and Assemble application
           command: cat /dev/null | sbt clean update assembly
       
-          - save_cache:
+      - save_cache:
           key: sbt-cache
           paths:
             - "~/.ivy2/cache"
