@@ -35,7 +35,6 @@ $ java -Dplay.server.http.port="8082" -Dplay.server.http.address="127.0.0.1" -ja
 ```
 
 # Vulnerability coverage table
-
 The following table shows vulns category implemented in HSL grouped according to OWASP standards.
 
 | OWASP category              | Vuln description                                  |
