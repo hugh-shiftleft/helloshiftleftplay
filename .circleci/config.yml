@@ -1,0 +1,69 @@
+# Java Maven CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-java/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/openjdk:8-jdk
+      
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/postgres:9.4
+
+    working_directory: ~/repo
+
+    environment:
+      SBT_VERSION: 1.0.4
+    
+    steps:
+      - checkout
+      # Install SL agent
+      - run: 
+          name: Install Shiftleft agent
+          command: curl https://www.shiftleft.io/download/sl-latest-linux-x64.tar.gz > /tmp/sl.tar.gz && sudo tar -C /usr/local/bin -xzf /tmp/sl.tar.gz
+      - run:
+          name: Get sbt binary
+          command: |
+                    apt update && apt install -y curl
+                    curl -L -o sbt-$SBT_VERSION.deb https://dl.bintray.com/sbt/debian/sbt-$SBT_VERSION.deb
+                    dpkg -i sbt-$SBT_VERSION.deb
+                    rm sbt-$SBT_VERSION.deb
+                    apt-get update
+                    apt-get install -y sbt python-pip git
+                    pip install awscli
+                    apt-get clean && apt-get autoclean
+      # Download and cache dependencies
+      - restore_cache:
+          key: sbt-cache
+          
+      # build the apps
+      - run: 
+          name: Build and Assemble application
+          command: cat /dev/null | sbt clean update assembly
+      
+          - save_cache:
+          key: sbt-cache
+          paths:
+            - "~/.ivy2/cache"
+            - "~/.sbt"
+            - "~/.m2"
+
+      - run:
+          name: Update PATH and Define Environment Variable at Runtime
+          command: |
+            echo 'export APP_NAME=hsl-finance-app' >> $BASH_ENV
+            source $BASH_ENV
+      
+      # Analyze for security!
+      - run: 
+          name: Analyze for security bugs
+          command: sl analyze --wait --app $APP_NAME target/helloshiftleft-play-assembly-0.0.1-SNAPSHOT.jar
+          
+      # Prioritize security bugs!
+      - run: 
+          name: Prioritize security bugs
+          command: sh uat.sh
