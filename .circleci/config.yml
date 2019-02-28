@@ -63,7 +63,17 @@ jobs:
           name: Analyze for security bugs
           command: sl analyze --wait --app $APP_NAME target/helloshiftleft-play-assembly-0.0.1-SNAPSHOT.jar
           
-      # Prioritize security bugs!
+      # Starting Agent!
       - run: 
-          name: Prioritize security bugs
-          command: sh uat.sh
+          name: Starting Application with instrumented agent
+          command: sh startapp.sh
+
+      # Starting Agent!
+      - run: 
+          name: Exercise Application (traffic and attacks)
+          command: sh exercise.sh
+      
+      # Test Security Results!
+      - run: 
+          name: Assert build quality against security standards
+          command: '[[ $(curl -s "https://www.shiftleft.io/api/v2/organizations/$SHIFTLEFT_ORG_ID/projects/$APP_NAME/metrics" -H "authorization: Bearer $TOKEN" -H "content-type: application/json" --data-binary "{\"context\":{\"projectSpId\":\"sl/$SHIFTLEFT_ORG_ID/$APP_NAME\"},\"queries\":[{\"violationsAll\":{\"projectSpId\":\"sl/$SHIFTLEFT_ORG_ID/$APP_NAME\"}}]}" | jq ".responses[0].violationsAll.violations | map(select(.count > 0)) | map(.name)" | grep -o "sensitive-to-http" | wc -l) -le 20 ]]'
