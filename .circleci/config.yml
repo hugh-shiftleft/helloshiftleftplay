@@ -28,14 +28,14 @@ jobs:
       - run:
           name: Get sbt binary
           command: |
-                    apt update && apt install -y curl
+                    sudo apt update && sudo apt install -y curl
                     curl -L -o sbt-$SBT_VERSION.deb https://dl.bintray.com/sbt/debian/sbt-$SBT_VERSION.deb
                     sudo dpkg -i sbt-$SBT_VERSION.deb
-                    rm sbt-$SBT_VERSION.deb
-                    apt-get update
-                    apt-get install -y sbt python-pip git
-                    pip install awscli
-                    apt-get clean && apt-get autoclean
+                    sudo rm sbt-$SBT_VERSION.deb
+                    sudo apt-get update
+                    sudo apt-get install -y sbt python-pip git
+                    sudo pip install awscli
+                    sudo apt-get clean && sudo apt-get autoclean
       # Download and cache dependencies
       - restore_cache:
           key: sbt-cache
