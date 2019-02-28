@@ -68,11 +68,6 @@ jobs:
           name: Starting Application with instrumented agent
           command: sh startapp.sh
 
-      # Starting Agent!
-      - run: 
-          name: Exercise Application (traffic and attacks)
-          command: sh exercise.sh
-      
       # Test Security Results!
       - run: 
           name: Assert build quality against security standards
