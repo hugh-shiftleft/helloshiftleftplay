@@ -10,7 +10,9 @@ $ file ./target/helloshiftleftplay-0.0.0-SNAPSHOT.jar
 # Run
 
 ```
+
 $ sbt run
+
 ```
 
 # Http routes
