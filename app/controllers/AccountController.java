@@ -58,7 +58,7 @@ public class AccountController extends Controller {
     // post /account/{accountId}/deposit/
     public Result depositIntoAccount(long accountId) {
         Account account = db.find(Account.class, accountId);
-        //log.info("Account Data is {}", account.toString());
+        log.info("Account Data is {}", account.toString());
         double amount = Double.parseDouble(
                 request().body().asFormUrlEncoded().get("amount")[0]);
         account.deposit(amount);
