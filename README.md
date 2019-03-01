@@ -34,8 +34,10 @@ To interact with the endpoints use `curl` (or any other tool)
 # Package standalone (not officially supported by Play)
 
 ```
+
 $ sbt assembly
 $ java -Dplay.server.http.port="8082" -Dplay.server.http.address="127.0.0.1" -jar ./target/HelloshiftleftPlay-assembly-0.0.0-SNAPSHOT.jar
+
 ```
 
 # Vulnerability coverage table
