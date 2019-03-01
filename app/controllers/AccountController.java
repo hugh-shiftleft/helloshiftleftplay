@@ -73,7 +73,7 @@ public class AccountController extends Controller {
                 request().body().asFormUrlEncoded().get("amount")[0]);
         account.withdraw(amount);
         account.save();
-        //log.info("Account Data is {}", account.toString());
+        log.info("Account Data is {}", account.toString());
         return ok(Json.toJson(account));
     }
 
