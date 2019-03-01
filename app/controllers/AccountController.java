@@ -32,6 +32,7 @@ public class AccountController extends Controller {
         response().setHeader("test-header-detection", new Account().toString());
         ArrayNode res = Json.newArray();
         db.find(Account.class).findList().forEach(account -> res.add(Json.toJson(account)));
+        
         return ok(res);
     }
 
