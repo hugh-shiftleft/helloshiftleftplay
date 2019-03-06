@@ -133,6 +133,7 @@ java -jar target/ysoserial-0.0.6-SNAPSHOT-all.jar CommonsCollections5 /usr/bin/x
 base64 commons5.bin | tr -d '\040\011\012\015'> commons5.b64
 ```
 
+
 # A9 Jackson
 
 The route `/bean1599` accepts POST operations and deserializes via Jackson the received body data. 
