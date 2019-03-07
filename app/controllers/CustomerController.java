@@ -408,8 +408,7 @@ public class CustomerController extends Controller {
         Customer customer1 = formFactory.form(Customer.class)
                 .bindFromRequest().get();
         customer1.save();
-        //response().setHeader("Location", String.format("%s/customers/%s",
-        //    request().path(), customer1.getId()));
+     
         return created(Json.toJson(customer1));
         //return created(new Html(Json.toJson(customer1).toString()));
     }
