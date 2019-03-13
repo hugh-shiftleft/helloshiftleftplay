@@ -136,7 +136,7 @@ base64 commons5.bin | tr -d '\040\011\012\015'> commons5.b64
 
 # A9 Jackson
 
-The route `/bean1599` accepts POST operations and deserializes via Jackson the received body data. 
+The route `/bean1599` accepts POST operations and deserializes the received body data via Jackson. 
 The file `exploit.json` contains the payload for CVE-2017-17485. 
 Instead, the file `exploitold.json` provides the payload for CVE-2017-7525.
 
