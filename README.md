@@ -155,7 +155,7 @@ curl localhost:8082/bean1599 -X POST -H "Content-Type: application/json" -d "$pa
 
 # XPath injection
 
-After starting the service, it is possible to bypass the credential check with this URL: http://localhost:8082/checkAccount/admin/x'%20or%20'1'='1 . This results in the following xpath query: `//user[username/text()='admin' and password/text()='x' or '1'='1']` and the message `Hello admin`.
+After starting the service it is possible to bypass the credential check with this URL: http://localhost:8082/checkAccount/admin/x'%20or%20'1'='1 . This results in the following xpath query: `//user[username/text()='admin' and password/text()='x' or '1'='1']` and the message `Hello admin`.
 
 If you provide wrong credentials the handler returns `Error with your credentials!`. Syntax errors as http://localhost:8082/checkAccount/admin/x' result in the error message `A server error occurred: javax.xml.xpath.XPathExpressionException: javax.xml.transform.TransformerException: misquoted literal... expected single quote!` 
 
