@@ -3,6 +3,7 @@
 ```
 
 $ sbt stage
+
 $ file ./target/helloshiftleftplay-0.0.0-SNAPSHOT.jar
 
 ```
