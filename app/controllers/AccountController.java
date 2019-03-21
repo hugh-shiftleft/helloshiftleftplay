@@ -53,6 +53,7 @@ public class AccountController extends Controller {
     // get /account/{accountId}
     public Result getAccount(long accountId) {
         log.info("Account Data is {}", db.find(Account.class, accountId).toString());
+        
         return ok(Json.toJson(db.find(Account.class, accountId)));
     }
 
