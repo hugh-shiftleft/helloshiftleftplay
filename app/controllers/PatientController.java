@@ -21,7 +21,7 @@ public class PatientController {
   // get /patients
   public Result getPatient() {
     Patient pat = Patient.db().find(Patient.class, 1L);
-    //log.info("First Patient is {}", pat);
+    log.info("First Patient is {}", pat);
 
     ArrayNode res = Json.newArray();
     Patient.db().find(Patient.class)
