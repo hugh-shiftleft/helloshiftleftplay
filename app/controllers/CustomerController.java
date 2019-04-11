@@ -85,7 +85,7 @@ public class CustomerController extends Controller {
 
         try {
             WSResponse res = promise.toCompletableFuture().join();
-            //log.info("Response from SFDC is {}", res.getStatus());
+            log.info("Response from SFDC is {}", res.getStatus());
         } catch (CompletionException exc) {
             throw new IOException(exc.getCause());
         }
