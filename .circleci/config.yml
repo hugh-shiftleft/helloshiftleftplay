@@ -58,6 +58,11 @@ jobs:
             echo 'export APP_NAME=hsl-finance-app' >> $BASH_ENV
             source $BASH_ENV
       
+      # Authorize to shiftleft.io
+      - run: 
+          name: Obtain shiftleft.io authorization
+          command: sl auth --org "9cf88d23-63ae-4990-9fbf-e0ba380dc4f1" --token "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODcwNzAxOTUsImlhdCI6MTU1NTQ0Nzc5NSwiaXNzIjoiU2hpZnRMZWZ0Iiwib3JnSUQiOiI5Y2Y4OGQyMy02M2FlLTQ5OTAtOWZiZi1lMGJhMzgwZGM0ZjEiLCJzY29wZXMiOlsiYXBpOnYyIiwidXBsb2Fkczp3cml0ZSIsImxvZzp3cml0ZSIsInBpcGVsaW5lc3RhdHVzOnJlYWQiLCJtZXRyaWNzOndyaXRlIiwicG9saWNpZXM6Y3VzdG9tZXIiLCJwb2xpY2llczpyZWFkIl19.Sl-f56yIixgqzKakHnSEowNqAM3OIPXSCh3bEnSBRQ7NCf4lekr6aWNRlwvjoVKzC5wxdNTmaXgoA9w8z9JME7zMsJ0iv-2aEi7QawuNAQidayi4u47OngVwICwHEguEr1kItYh4p3Opa6PxN78oryAA_REx3YvPH0Jaixrt7HnZss6JcVDJs1P0YnYusUP8UDSq6wWb7B9ipdDkkK80WK15UOj8EAysuKfW7VXLfEu7V2Wq-3SWV6qNYvFg2Ldgut2u5EtKyr_0aEv4G9Dp5nki1E6fWsQ05tU7kgfSl-0VVnLIbdMdFVXIqzg4qYGitRFGY03WYgNAIhWlIZQIJQ"
+
       # Analyze for security!
       - run: 
           name: Analyze for security bugs
