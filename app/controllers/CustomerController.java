@@ -77,7 +77,7 @@ public class CustomerController extends Controller {
     }
 
     private void dispatchEventToSalesForce(String event) throws Exception {
-        Config config = play.api.Play.current().asJava().config();
+/*        Config config = play.api.Play.current().asJava().config();
         CompletionStage<? extends WSResponse> promise = ws.url(config.getString("sfdc.url"))
                 .setBody(event)
                 .setAuth(config.getString("sfdc.username"), config.getString("sfdc.password"),
@@ -88,7 +88,7 @@ public class CustomerController extends Controller {
             log.info("Response from SFDC is {}", res.getStatus());
         } catch (CompletionException exc) {
             throw new IOException(exc.getCause());
-        }
+        } */
     }
 
     /**
