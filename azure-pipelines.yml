@@ -27,6 +27,10 @@ steps:
   inputs:
     script: 'installer-dotnet-framework.exe --no-prompt --dotnet-framework'
 
+- task: CmdLine@2
+  inputs:
+    script: 'sl'
+    
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
