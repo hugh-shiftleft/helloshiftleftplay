@@ -29,10 +29,5 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'C:\Program Files\ShiftLeft\sl'
-    
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: 'dir d:/a/1/s'
+    script: '"C:\Program Files\ShiftLeft\sl"'
     
