@@ -21,5 +21,10 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
+    script: 'Expand-Archive -Path installer-dotnet-framework-latest-windows-x64.zip'
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
     script: 'dir d:/a/1/s'
     
