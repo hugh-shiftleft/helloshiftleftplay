@@ -23,6 +23,10 @@ steps:
     targetType: 'inline'
     script: 'Expand-Archive -Path installer-dotnet-framework-latest-windows-x64.zip -DestinationPath .'
 
+- task: CmdLine@2
+  inputs:
+    script: 'D:/a/1/s/installer-dotnet-framework.exe --no-prompt --dotnet-framework'
+
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
