@@ -29,7 +29,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'sl'
+    script: 'C:\Program Files\ShiftLeft\sl'
     
 - task: PowerShell@2
   inputs:
